@@ -1,0 +1,35 @@
+name: Bug report
+description: Report a reproducible Scene Folder Tools defect.
+title: "Bug: "
+labels: ["bug"]
+body:
+  - type: input
+    id: foundry
+    attributes:
+      label: Foundry VTT version
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Game system and version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and logs
+    validations:
+      required: true
