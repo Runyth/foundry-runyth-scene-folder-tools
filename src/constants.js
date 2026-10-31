@@ -2,7 +2,7 @@
 // Copyright (C) 2026 Runyth. See the LICENSE file for rights and obligations.
 export const MODULE_ID = "runyth-scene-folder-tools";
 export const MODULE_TITLE = "Scene Folder Tools";
-export const VERSION = "1.1.2";
+export const VERSION = "1.1.3";
 export const API_VERSION = "1.0.0";
 export const ROOT_FOLDER_ID = "__root__";
 export const ALL_SCENE_FOLDERS_ID = "__all__";

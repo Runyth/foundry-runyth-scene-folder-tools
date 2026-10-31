@@ -2,7 +2,7 @@
   "id": "runyth-scene-folder-tools",
   "title": "Runyth Scene Folder Tools",
   "description": "Reliable Scene folder selection, recursive filtering, advanced sorting, bulk organization, quick moves, undo, and scoped drag auto-scrolling for Foundry VTT.",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "authors": [
     {
       "name": "Runyth",
@@ -36,6 +36,6 @@
   "readme": "README.md",
   "url": "https://github.com/Runyth/foundry-runyth-scene-folder-tools",
   "manifest": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/latest/download/module.json",
-  "download": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/download/v1.1.2/runyth-scene-folder-tools-v1.1.2-mod.zip",
+  "download": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/download/v1.1.3/runyth-scene-folder-tools-v1.1.3-mod.zip",
   "changelog": "CHANGELOG.md"
 }

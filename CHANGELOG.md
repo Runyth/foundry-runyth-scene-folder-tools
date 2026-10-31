@@ -2,6 +2,11 @@
 
 All notable changes are documented here. The project follows Semantic Versioning.
 
+## 1.1.3 - 2026-11-01
+
+- Moved the repository tooling from `scripts/` into `tools/` so packaging and validation live at the standard Runyth module-structure path; `scripts/main.js` remains the only runtime script.
+- Preserved all behaviour, storage, and migration contracts; this patch changes repository layout only and requires no content migration.
+
 ## 1.1.2 - 2026-10-31
 
 - Licensed the program under AGPL-3.0-or-later.
