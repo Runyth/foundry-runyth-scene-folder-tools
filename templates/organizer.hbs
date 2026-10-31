@@ -1,0 +1,221 @@
+<div class="sft-app-body" aria-busy="{{busy}}">
+  <header class="sft-summary">
+    <div>
+      <strong data-selection-summary>{{localize "SFT.Organizer.SelectedScenes" count=selectedCount}}</strong>
+      <span>{{localize "SFT.Organizer.Destination" destination=selectedDestination}}</span>
+    </div>
+    <div class="sft-summary-actions">
+      <button type="button" data-action="refresh" {{#if busy}}disabled{{/if}}>
+        <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+        {{localize "SFT.Action.Refresh"}}
+      </button>
+      <button type="button" data-action="undo" {{#if undoDisabled}}disabled{{/if}}>
+        <i class="fa-solid fa-rotate-left" aria-hidden="true"></i>
+        {{localize "SFT.Action.Undo"}}
+      </button>
+    </div>
+  </header>
+
+  <div class="sft-organizer-grid">
+    <section class="sft-pane" aria-labelledby="sft-scenes-heading">
+      <header class="sft-pane-header">
+        <h2 id="sft-scenes-heading">{{localize "SFT.Organizer.ScenesHeading"}}</h2>
+        <div class="sft-filter-grid">
+          <label class="sft-search">
+            <span>{{localize "SFT.Search.Scenes"}}</span>
+            <input name="sceneSearch" type="search" value="{{sceneSearch}}" autocomplete="off" placeholder="{{localize 'SFT.Search.ScenesPlaceholder'}}">
+          </label>
+          <div class="sft-scene-folder-filter">
+            <span id="sft-scene-folder-filter-label">{{localize "SFT.Filter.SceneFolder"}}</span>
+            <button
+              type="button"
+              class="sft-scene-folder-filter-toggle"
+              data-action="toggle-scene-folder-filter"
+              aria-labelledby="sft-scene-folder-filter-label sft-scene-folder-filter-value"
+              aria-expanded="{{sceneFolderFilterOpen}}"
+              aria-controls="sft-scene-folder-filter-panel"
+              title="{{localize 'SFT.Filter.SceneFolderHint'}}"
+            >
+              <span id="sft-scene-folder-filter-value" title="{{sceneFolderFilterLabel}}">{{sceneFolderFilterLabel}}</span>
+              <i class="fa-solid {{#if sceneFolderFilterOpen}}fa-chevron-up{{else}}fa-chevron-down{{/if}}" aria-hidden="true"></i>
+            </button>
+
+            {{#if sceneFolderFilterOpen}}
+              <div id="sft-scene-folder-filter-panel" class="sft-scene-folder-filter-panel">
+                <label class="sft-search">
+                  <span>{{localize "SFT.Filter.SearchFolders"}}</span>
+                  <input
+                    name="sceneFolderFilterSearch"
+                    type="search"
+                    value="{{sceneFolderFilterSearch}}"
+                    autocomplete="off"
+                    placeholder="{{localize 'SFT.Filter.SearchFoldersPlaceholder'}}"
+                  >
+                </label>
+                <div class="sft-scene-folder-filter-options" role="listbox" aria-label="{{localize 'SFT.Filter.SceneFolder'}}">
+                  {{#each sceneFolderFilterItems}}
+                    <button
+                      type="button"
+                      class="sft-scene-folder-filter-option {{#if selected}}is-selected{{/if}}"
+                      data-action="select-scene-folder-filter"
+                      data-folder-id="{{id}}"
+                      data-search-text="{{searchText}}"
+                      data-scene-folder-filter-option
+                      style="--sft-filter-indent: {{indent}}px"
+                      role="option"
+                      aria-selected="{{selected}}"
+                      title="{{#if path}}{{path}}{{else}}{{name}}{{/if}}"
+                    >
+                      <i class="fa-solid {{#if special}}fa-layer-group{{else}}fa-folder{{/if}}" aria-hidden="true"></i>
+                      <span class="sft-scene-folder-filter-option-text">
+                        <strong>{{name}}</strong>
+                        {{#unless special}}<small>{{path}}</small>{{/unless}}
+                      </span>
+                      {{#if selected}}<i class="fa-solid fa-check" aria-hidden="true"></i>{{/if}}
+                    </button>
+                  {{/each}}
+                  <div class="sft-empty-note" data-scene-folder-filter-empty hidden role="status">
+                    {{localize "SFT.Filter.NoMatchingFolders"}}
+                  </div>
+                </div>
+              </div>
+            {{/if}}
+          </div>
+          <label>
+            <span>{{localize "SFT.Sort.SceneLabel"}}</span>
+            <select name="sceneSort">
+              {{#each sceneSortOptions}}
+                <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </label>
+        </div>
+        <div class="sft-toolbar">
+          <button type="button" data-action="select-all" {{#if busy}}disabled{{/if}}>{{localize "SFT.Action.SelectAllVisible"}}</button>
+          <button type="button" data-action="clear-selection" {{#if busy}}disabled{{/if}}>{{localize "SFT.Action.ClearSelection"}}</button>
+          <small>{{localize "SFT.Organizer.MultiSelectHint"}}</small>
+        </div>
+      </header>
+
+      <div class="sft-scroll-region sft-scene-list" data-scroll-key="scenes" role="listbox" aria-multiselectable="true" aria-label="{{localize 'SFT.Organizer.SceneList'}}">
+        {{#if hasScenes}}
+          {{#each sceneRows}}
+            <div class="sft-scene-row {{#if selected}}is-selected{{/if}}" data-scene-id="{{id}}" tabindex="0" role="option" aria-selected="{{selected}}">
+              <input type="checkbox" name="sceneSelection" value="{{id}}" aria-label="{{localize 'SFT.Action.SelectScene' scene=name}}" {{#if selected}}checked{{/if}}>
+              <span class="sft-row-main">
+                <strong>{{name}}</strong>
+                <small>{{#if folderPath}}{{folderPath}}{{else}}{{localize "SFT.Destination.Root"}}{{/if}}</small>
+              </span>
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="sft-empty-state">
+            <i class="fa-regular fa-map" aria-hidden="true"></i>
+            <p>{{localize "SFT.Empty.NoScenes"}}</p>
+          </div>
+        {{/if}}
+      </div>
+    </section>
+
+    <section class="sft-pane" aria-labelledby="sft-folders-heading">
+      <header class="sft-pane-header">
+        <h2 id="sft-folders-heading">{{localize "SFT.Organizer.FoldersHeading"}}</h2>
+        <div class="sft-filter-grid">
+          <label class="sft-search">
+            <span>{{localize "SFT.Search.Folders"}}</span>
+            <input name="folderSearch" type="search" value="{{folderSearch}}" autocomplete="off" placeholder="{{localize 'SFT.Search.FoldersPlaceholder'}}">
+          </label>
+          <label>
+            <span>{{localize "SFT.Sort.FolderLabel"}}</span>
+            <select name="folderSort">
+              {{#each folderSortOptions}}
+                <option value="{{value}}" {{#if selected}}selected{{/if}}>{{label}}</option>
+              {{/each}}
+            </select>
+          </label>
+        </div>
+
+        {{#if favorites.length}}
+          <div class="sft-destination-group" aria-label="{{localize 'SFT.Destination.Favorites'}}">
+            <span>{{localize "SFT.Destination.Favorites"}}</span>
+            <div class="sft-chips">
+              {{#each favorites}}
+                <button type="button" data-action="select-destination-chip" data-folder-id="{{id}}" title="{{path}}">{{name}}</button>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+        {{#if recents.length}}
+          <div class="sft-destination-group" aria-label="{{localize 'SFT.Destination.Recents'}}">
+            <span>{{localize "SFT.Destination.Recents"}}</span>
+            <div class="sft-chips">
+              {{#each recents}}
+                <button type="button" data-action="select-destination-chip" data-folder-id="{{id}}" title="{{path}}">{{name}}</button>
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      </header>
+
+      <div class="sft-scroll-region sft-folder-list" data-scroll-key="folders" role="tree" aria-label="{{localize 'SFT.Organizer.FolderList'}}">
+        {{#if hasFolders}}
+          {{#each folderRows}}
+            <div class="sft-folder-row {{#if selected}}is-selected{{/if}}" style="--sft-indent: {{indent}}px" role="treeitem" aria-level="{{ariaLevel}}" aria-selected="{{selected}}" {{#if hasChildren}}aria-expanded="{{expanded}}"{{/if}}>
+              {{#if hasChildren}}
+                <button type="button" class="sft-disclosure" data-action="toggle-folder" data-folder-id="{{id}}" aria-label="{{localize 'SFT.Action.ToggleFolder'}}">
+                  <i class="fa-solid {{#if expanded}}fa-chevron-down{{else}}fa-chevron-right{{/if}}" aria-hidden="true"></i>
+                </button>
+              {{else}}
+                <span class="sft-disclosure-spacer" aria-hidden="true"></span>
+              {{/if}}
+              <button type="button" class="sft-folder-select" data-action="select-folder" data-folder-id="{{id}}" title="{{path}}">
+                <i class="fa-solid {{#if isRoot}}fa-layer-group{{else}}fa-folder{{/if}}" aria-hidden="true"></i>
+                <span>{{displayName}}</span>
+                {{#if recent}}<i class="fa-solid fa-clock-rotate-left sft-status-icon" title="{{localize 'SFT.Destination.Recent'}}" aria-label="{{localize 'SFT.Destination.Recent'}}"></i>{{/if}}
+              </button>
+              {{#unless isRoot}}
+                <button type="button" class="sft-favorite" data-action="favorite-folder" data-folder-id="{{id}}" data-favorite="{{favorite}}" aria-label="{{localize 'SFT.Action.ToggleFavorite'}}">
+                  <i class="{{#if favorite}}fa-solid{{else}}fa-regular{{/if}} fa-star" aria-hidden="true"></i>
+                </button>
+              {{/unless}}
+            </div>
+          {{/each}}
+        {{else}}
+          <div class="sft-empty-state">
+            <i class="fa-regular fa-folder-open" aria-hidden="true"></i>
+            <p>{{localize "SFT.Empty.NoFolders"}}</p>
+          </div>
+        {{/if}}
+      </div>
+
+      {{#if noMatchingFolders}}
+        <div class="sft-empty-note" role="status">{{localize "SFT.Empty.NoFolders"}}</div>
+      {{/if}}
+      {{#if noSceneFolders}}
+        <div class="sft-empty-note" role="status">{{localize "SFT.Empty.RootOnly"}}</div>
+      {{/if}}
+
+      {{#if canCreateFolder}}
+        <div class="sft-create-folder">
+          <label>
+            <span>{{localize "SFT.CreateFolder.Name"}}</span>
+            <input name="newFolderName" type="text" maxlength="100" autocomplete="off" placeholder="{{localize 'SFT.CreateFolder.Placeholder'}}" {{#if busy}}disabled{{/if}}>
+          </label>
+          <button type="button" data-action="create-folder" {{#if busy}}disabled{{/if}}>
+            <i class="fa-solid fa-folder-plus" aria-hidden="true"></i>
+            {{localize "SFT.Action.CreateFolder"}}
+          </button>
+          <small>{{localize "SFT.CreateFolder.ParentHint" destination=selectedDestination}}</small>
+        </div>
+      {{/if}}
+    </section>
+  </div>
+
+  <footer class="sft-footer">
+    <span data-move-summary data-destination="{{selectedDestination}}">{{localize "SFT.Organizer.MoveSummary" count=selectedCount destination=selectedDestination}}</span>
+    <button type="button" class="sft-primary" data-action="move-selected" {{#if moveDisabled}}disabled{{/if}}>
+      <i class="fa-solid fa-folder-arrow-down" aria-hidden="true"></i>
+      {{localize "SFT.Action.MoveSelected"}}
+    </button>
+  </footer>
+</div>

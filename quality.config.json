@@ -1,0 +1,7 @@
+{
+  "maximumLineLength": 160,
+  "forbiddenSourceMarkers": ["TODO", "FIXME", "HACK"],
+  "forbiddenPatterns": ["eval(", "Function("],
+  "requiredFinalNewline": true,
+  "allowTabsIn": ["package-lock.json"]
+}

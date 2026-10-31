@@ -1,0 +1,26 @@
+{
+  "name": "runyth-scene-folder-tools",
+  "version": "1.1.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.13.0 <27"
+  },
+  "scripts": {
+    "clean": "node scripts/clean.mjs",
+    "format:check": "node scripts/format-check.mjs",
+    "lint": "node scripts/lint.mjs",
+    "typecheck": "node scripts/typecheck.mjs",
+    "test": "node --test tests/*.test.js",
+    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test",
+    "build": "node scripts/build.mjs",
+    "package": "npm run quality && node scripts/package.mjs",
+    "inspect:archives": "node scripts/inspect-archives.mjs",
+    "release:verify": "npm run package && npm run inspect:archives"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Runyth/foundry-runyth-scene-folder-tools.git"
+  },
+  "license": "AGPL-3.0-or-later"
+}
