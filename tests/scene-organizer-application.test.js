@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Copyright (C) 2026 Runyth. See the LICENSE file for rights and obligations.
+// Copyright (C) 2026 Daniel Braniewski. See the LICENSE file for rights and obligations.
 import { describe, expect, it } from "./vitest-shim.js";
 import { SORT_MODES } from "../src/constants.js";
 import { registerSettings } from "../src/settings.js";

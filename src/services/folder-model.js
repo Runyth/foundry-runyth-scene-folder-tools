@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
-// Copyright (C) 2026 Runyth. See the LICENSE file for rights and obligations.
+// Copyright (C) 2026 Daniel Braniewski. See the LICENSE file for rights and obligations.
 import { FOLDER_SORT_MODES, ROOT_FOLDER_ID } from "../constants.js";
 
 const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
