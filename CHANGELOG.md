@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.5 — 2026-11-05
+
+- Clicking anywhere on a Scene row in the Scene Organizer now toggles that row
+  like operating its checkbox, keeping the rest of the multi-selection intact
+  (a missed row is never demoted to a single selection); Shift-click keeps its
+  range-select meaning, and keyboard Enter/Space on a row mirrors the same
+  checkbox toggle.
 ## 1.1.4 — 2026-11-01
 
 - Attributed the source licence headers to the same holder the README Licence chapter names so every module surface carries the same copyright holder.

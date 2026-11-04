@@ -285,10 +285,15 @@ export class SceneOrganizer extends HandlebarsApplicationMixin(ApplicationV2) {
     const sceneRow = target?.closest(".sft-scene-row[data-scene-id]");
     if (sceneRow && this.element.contains(sceneRow) && !target.closest("button, input, select, a")) {
       event.preventDefault();
+      // Clicking anywhere on a scene row acts exactly like operating its checkbox:
+      // toggle that row's membership and keep the rest of the selection, so a
+      // missed row is never demoted to a single selection. Shift keeps its
+      // checkbox range-select meaning.
       this.updateSceneSelection({
         sceneId: sceneRow.dataset.sceneId,
+        checked: !this.organizerState.selectedSceneIds.has(sceneRow.dataset.sceneId),
         shift: Boolean(event.shiftKey),
-        additive: Boolean(event.ctrlKey || event.metaKey)
+        source: "checkbox"
       });
       return;
     }
@@ -369,8 +374,9 @@ export class SceneOrganizer extends HandlebarsApplicationMixin(ApplicationV2) {
     event.preventDefault();
     this.updateSceneSelection({
       sceneId: row.dataset.sceneId,
+      checked: !this.organizerState.selectedSceneIds.has(row.dataset.sceneId),
       shift: Boolean(event.shiftKey),
-      additive: Boolean(event.ctrlKey || event.metaKey)
+      source: "checkbox"
     });
   }
 

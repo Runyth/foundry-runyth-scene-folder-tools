@@ -21,6 +21,19 @@ describe("OrganizerState", () => {
     expect([...state.selectedSceneIds]).toEqual(["s1", "s2", "s3"]);
   });
 
+  it("row-click checkbox semantics keep the existing multi-selection", () => {
+    const state = new OrganizerState();
+    state.toggleScene("s1", { checked: true, visibleIds });
+    state.toggleScene("s2", { checked: true, visibleIds });
+    // clicking a row toggles that row like its checkbox; the missed row is
+    // never demoted to a single selection
+    state.toggleScene("s4", { checked: !state.selectedSceneIds.has("s4"), visibleIds });
+    expect([...state.selectedSceneIds]).toEqual(["s1", "s2", "s4"]);
+    // clicking it again removes only that row
+    state.toggleScene("s4", { checked: !state.selectedSceneIds.has("s4"), visibleIds });
+    expect([...state.selectedSceneIds]).toEqual(["s1", "s2"]);
+  });
+
   it("supports plain-click, modifier-click, and Shift-click range selection", () => {
     const state = new OrganizerState();
     state.selectSceneByPointer("s1", { visibleIds });
