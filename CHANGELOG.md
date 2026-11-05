@@ -1,5 +1,24 @@
 # Changelog
 
+
+## 1.2.0 — 2026-11-05
+
+- Adopted the fleet-wide Garb & Grime UI design for the Scene Organizer and
+  the destination folder picker: petrol gradient window shell, gold headings,
+  gradient buttons with gold hover, dark field controls, pill-style chips,
+  gold selection/hover inks with inset outlines, thin scrollbars, and the
+  fleet focus ring.
+- The stock Foundry look kept by earlier versions remains available through a
+  new client setting; it is disabled by default, so the fleet look is used
+  out of the box and the stock look is restored verbatim when the toggle is
+  enabled.
+- The toggle applies to open windows immediately: after closing the settings
+  configuration every mounted Scene Folder Tools window re-syncs its look
+  class, and every later render re-derives the class from the setting.
+- Added the localization strings for the new setting in English and German
+  alongside a `ui-look` regression suite covering the disabled-by-default
+  contract and the class synthesis for both looks.
+
 ## 1.1.5 — 2026-11-05
 
 - Clicking anywhere on a Scene row in the Scene Organizer now toggles that row

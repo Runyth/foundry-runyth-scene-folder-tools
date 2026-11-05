@@ -432,3 +432,160 @@
     animation: none !important;
   }
 }
+
+/* Fleet UI (default): the Garb & Grime design language scoped to the module
+   windows. The rules above stay untouched, so the stock Foundry look returns
+   verbatim whenever the module drops the sft-fleet-ui class. */
+.runyth-scene-folder-tools.sft-fleet-ui {
+  --sft-fleet-bg: #17191d;
+  --sft-fleet-panel: rgba(35, 38, 44, 0.96);
+  --sft-fleet-panel-2: #2b2f36;
+  --sft-fleet-border: #555d69;
+  --sft-fleet-field: #101216;
+  --sft-fleet-field-border: #68717f;
+  --sft-fleet-text: #f2f3f5;
+  --sft-fleet-muted: #c4c9d0;
+  --sft-fleet-accent: #d7ad61;
+  --sft-fleet-accent-strong: #f0ca82;
+  --sft-fleet-focus: #8ec5ff;
+  --sft-border: var(--sft-fleet-border);
+  --sft-hover: var(--sft-fleet-panel-2);
+  --sft-selected: rgba(48, 44, 35, 0.98);
+  --sft-focus: var(--sft-fleet-accent-strong);
+  color: var(--sft-fleet-text);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .window-content {
+  background: linear-gradient(160deg, #16181c, #20242a 65%, #17191d);
+  color: var(--sft-fleet-text);
+  scrollbar-width: thin;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-app-body {
+  scrollbar-width: thin;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scroll-region,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-folder-filter-options {
+  scrollbar-width: thin;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui :is(h1, h2, h3) {
+  color: var(--sft-fleet-accent-strong);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-pane {
+  border: 1px solid var(--sft-fleet-border);
+  border-radius: 0.5rem;
+  background: var(--sft-fleet-panel);
+  box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.28);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-pane-header {
+  background: rgba(11, 12, 15, 0.86);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-folder-filter-panel,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-pane-header select,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-filter-grid select {
+  border-color: var(--sft-fleet-border);
+  background: var(--sft-fleet-field);
+  color: var(--sft-fleet-text);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-folder-filter-option {
+  color: var(--sft-fleet-text);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-folder-filter-option small,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-row-main small,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-toolbar small,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-empty-note,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-summary > div:first-child small {
+  color: var(--sft-fleet-muted);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-row,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-folder-row {
+  border-color: transparent;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-row:hover,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-folder-row:hover {
+  box-shadow: inset 0 0 0 1px var(--sft-fleet-border);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-row.is-selected,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-folder-row.is-selected {
+  box-shadow: inset 0 0 0 1px var(--sft-fleet-accent);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-row.is-selected input,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-scene-folder-filter-option.is-selected input:checked {
+  accent-color: var(--sft-fleet-accent);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui button {
+  border: 1px solid var(--sft-fleet-field-border);
+  border-radius: 0.35rem;
+  background: linear-gradient(#343943, #282c33);
+  color: #f6f7f8;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui button:hover:not(:disabled) {
+  border-color: var(--sft-fleet-accent);
+  background: linear-gradient(#444b57, #31363f);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui button:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-folder-row button {
+  border-color: transparent;
+  background: transparent;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-folder-row button:hover:not(:disabled) {
+  border-color: var(--sft-fleet-border);
+  background: var(--sft-fleet-panel-2);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-create-folder input,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-search input,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-create-folder select {
+  border: 1px solid var(--sft-fleet-field-border);
+  border-radius: 0.3rem;
+  background: var(--sft-fleet-field);
+  color: var(--sft-fleet-text);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-create-folder small {
+  color: var(--sft-fleet-muted);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-chips button {
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-primary {
+  font-weight: 700;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-footer,
+.runyth-scene-folder-tools.sft-fleet-ui .sft-create-folder {
+  border-color: var(--sft-fleet-border);
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui :is(button, input, select):focus-visible,
+.sft-fleet-ui .sft-open-organizer:focus-visible,
+.sft-fleet-ui .sft-quick-move:focus-visible {
+  outline: 2px solid var(--sft-fleet-focus);
+  outline-offset: 1px;
+}
+
+.runyth-scene-folder-tools.sft-fleet-ui .sft-empty-state {
+  color: var(--sft-fleet-muted);
+}

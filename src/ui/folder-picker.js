@@ -6,6 +6,7 @@ import { SceneFolderToolsError } from "../core/errors.js";
 import { buildFolderModel, expandFolderAncestors, flattenFolderModel, folderPath } from "../services/folder-model.js";
 import { ListenerManager } from "./listener-manager.js";
 import { registerApplication, unregisterApplication } from "./app-registry.js";
+import { applyUiLook } from "./ui-look.js";
 import { SearchRenderScheduler } from "./search-render-scheduler.js";
 import {
   confirmSceneMove,
@@ -117,6 +118,7 @@ export class FolderPicker extends HandlebarsApplicationMixin(ApplicationV2) {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
+    applyUiLook(this.element);
     const signal = this.listeners.reset();
     this.element.addEventListener("input", (event) => this.#onInput(event), { signal });
     this.element.addEventListener("click", (event) => this.#onClick(event), { signal });

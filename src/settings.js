@@ -2,6 +2,7 @@
 // Copyright (C) 2026 Daniel Braniewski. See the LICENSE file for rights and obligations.
 import { FOLDER_SORT_MODES, MODULE_ID, SETTINGS, SORT_MODES } from "./constants.js";
 import { SceneOrganizer } from "./ui/scene-organizer.js";
+import { enforceUiLook } from "./ui/ui-look.js";
 
 function t(key) {
   return globalThis.game.i18n.localize(key);
@@ -17,6 +18,16 @@ export function registerSettings() {
     restricted: true
   });
 
+  globalThis.Hooks?.on?.("closeSettingsConfig", () => enforceUiLook());
+
+  register(SETTINGS.STOCK_LOOK, {
+    name: t("SFT.Settings.FoundryLook.Name"),
+    hint: t("SFT.Settings.FoundryLook.Hint"),
+    scope: "client",
+    config: true,
+    type: Boolean,
+    default: false
+  });
   register(SETTINGS.AUTO_SCROLL, {
     name: t("SFT.Settings.AutoScroll.Name"),
     hint: t("SFT.Settings.AutoScroll.Hint"),

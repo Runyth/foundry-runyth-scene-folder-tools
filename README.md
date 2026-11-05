@@ -36,7 +36,7 @@ Official references used by the implementation:
 ## Installation
 
 1. Stop Foundry VTT.
-2. Extract `runyth-scene-folder-tools-v1.1.1.zip` into `FoundryVTT/Data/modules/`.
+2. Extract `runyth-scene-folder-tools-v1.2.0.zip` into `FoundryVTT/Data/modules/`.
 3. Confirm the resulting path is `FoundryVTT/Data/modules/runyth-scene-folder-tools/module.json`.
 4. Start Foundry VTT, open the world, and enable **Scene Folder Tools** under **Manage Modules**.
 

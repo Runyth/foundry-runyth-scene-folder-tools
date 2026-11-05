@@ -18,6 +18,7 @@ import {
 import { captureScrollState, restoreScrollState } from "./scroll-state.js";
 import { OrganizerState, prepareSceneRows } from "./organizer-state.js";
 import { registerApplication, setOrganizer, unregisterApplication } from "./app-registry.js";
+import { applyUiLook } from "./ui-look.js";
 import { SearchRenderScheduler } from "./search-render-scheduler.js";
 import {
   confirmSceneMove,
@@ -136,6 +137,7 @@ export class SceneOrganizer extends HandlebarsApplicationMixin(ApplicationV2) {
 
   async _onRender(context, options) {
     await super._onRender(context, options);
+    applyUiLook(this.element);
     const signal = this.listeners.reset();
     const element = this.element;
     element.addEventListener("input", (event) => this.#onInput(event), { signal });

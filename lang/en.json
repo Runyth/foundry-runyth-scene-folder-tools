@@ -113,6 +113,8 @@
   "SFT.Settings.DefaultSort.Hint": "Initial Scene sorting used by the organizer.",
   "SFT.Settings.DefaultSort.Name": "Default Scene sorting",
   "SFT.Settings.EnableKeybindings.Hint": "Allow the module's configurable keybinding actions. No shortcuts are assigned by default.",
+  "SFT.Settings.FoundryLook.Hint": "Keep the stock Foundry UI design for the Scene Organizer and its folder picker. By default, both use the fleet-wide Garb & Grime look.",
+  "SFT.Settings.FoundryLook.Name": "Stock Foundry look",
   "SFT.Settings.EnableKeybindings.Name": "Enable Scene Folder Tools keybindings",
   "SFT.Settings.OrganizerMenu.Hint": "Open the Scene Organizer for explicit and bulk folder moves.",
   "SFT.Settings.OrganizerMenu.Label": "Open Scene Organizer",

@@ -113,6 +113,8 @@
   "SFT.Settings.DefaultSort.Hint": "Anfängliche Szenensortierung in der Szenenorganisation.",
   "SFT.Settings.DefaultSort.Name": "Standardsortierung der Szenen",
   "SFT.Settings.EnableKeybindings.Hint": "Erlaubt die konfigurierbaren Tastenzuweisungen des Moduls. Standardmäßig sind keine Tasten belegt.",
+  "SFT.Settings.FoundryLook.Hint": "Beibehaltung des Foundry-Standards-UI-Designs für den Scene Organizer und die Ordnerauswahl. Standardmäßig nutzen beide fleetweit den Garb & Grime-Look.",
+  "SFT.Settings.FoundryLook.Name": "Foundry-Standardlook",
   "SFT.Settings.EnableKeybindings.Name": "Tastenzuweisungen von Scene Folder Tools aktivieren",
   "SFT.Settings.OrganizerMenu.Hint": "Öffnet die Szenenorganisation für explizite und gesammelte Ordnerverschiebungen.",
   "SFT.Settings.OrganizerMenu.Label": "Szenenorganisation öffnen",

@@ -2,7 +2,7 @@
 // Copyright (C) 2026 Daniel Braniewski. See the LICENSE file for rights and obligations.
 export const MODULE_ID = "runyth-scene-folder-tools";
 export const MODULE_TITLE = "Scene Folder Tools";
-export const VERSION = "1.1.5";
+export const VERSION = "1.2.0";
 export const API_VERSION = "1.0.0";
 export const ROOT_FOLDER_ID = "__root__";
 export const ALL_SCENE_FOLDERS_ID = "__all__";
@@ -23,6 +23,7 @@ export const SETTINGS = Object.freeze({
   ORGANIZER_FOLDER_SORT: "organizerFolderSort",
   ENABLE_KEYBINDINGS: "enableKeybindings",
   DEBUG: "debugLogging",
+  STOCK_LOOK: "stockFoundryLook",
   DESTINATIONS: "destinations"
 });
 
