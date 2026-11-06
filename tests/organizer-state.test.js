@@ -55,6 +55,43 @@ describe("OrganizerState", () => {
     expect(state.selectedSceneIds.size).toBe(0);
   });
 
+  it("toggles Select All Visible: a full view deselects on the next press", () => {
+    const state = new OrganizerState();
+    expect(state.selectAllVisible(visibleIds)).toBe(false);
+    expect([...state.selectedSceneIds]).toEqual(visibleIds);
+    expect(state.selectAllVisible(visibleIds)).toBe(true);
+    expect(state.selectedSceneIds.size).toBe(0);
+    // re-pressing after a full deselect selects all visible rows again
+    expect(state.selectAllVisible(visibleIds)).toBe(false);
+    expect([...state.selectedSceneIds]).toEqual(visibleIds);
+  });
+
+  it("completes a partial view into a full selection first", () => {
+    const state = new OrganizerState();
+    state.selectAllVisible(["s1", "s3", "s5"]);
+    expect([...state.selectedSceneIds].sort()).toEqual(["s1", "s3", "s5"]);
+    expect(state.selectAllVisible(visibleIds)).toBe(false);
+    expect([...state.selectedSceneIds].sort()).toEqual([...visibleIds].sort());
+  });
+
+  it("never touches rows selected outside the current view", () => {
+    const state = new OrganizerState();
+    state.selectAllVisible(["s1", "s3"]);
+    const filteredView = ["s2", "s3", "s4"];
+    expect(state.selectAllVisible(filteredView)).toBe(false);
+    expect([...state.selectedSceneIds].sort()).toEqual(["s1", "s2", "s3", "s4"]);
+    expect(state.selectAllVisible(filteredView)).toBe(true);
+    expect([...state.selectedSceneIds]).toEqual(["s1"]);
+  });
+
+  it("treats an empty visible view as a no-op", () => {
+    const state = new OrganizerState();
+    expect(state.selectAllVisible([])).toBe(false);
+    state.selectAllVisible(["s1"]);
+    expect(state.selectAllVisible([])).toBe(false);
+    expect([...state.selectedSceneIds]).toEqual(["s1"]);
+  });
+
   it("preserves selection when filtering changes", () => {
     const state = new OrganizerState();
     state.toggleScene("s1", { checked: true, visibleIds });

@@ -105,7 +105,16 @@ export class OrganizerState {
   }
 
   selectAllVisible(visibleIds) {
-    for (const id of visibleIds) this.selectedSceneIds.add(id);
+    if (!Array.isArray(visibleIds) || !visibleIds.length) return false;
+    // Toggle like Runyth Sleep and Runyth Garb & Grime: if every visible row
+    // is already selected, pressing again deselects all visible rows. Rows
+    // selected outside the current view are never touched.
+    const deselected = visibleIds.every((id) => this.selectedSceneIds.has(id));
+    for (const id of visibleIds) {
+      if (deselected) this.selectedSceneIds.delete(id);
+      else this.selectedSceneIds.add(id);
+    }
+    return deselected;
   }
 
   clearSelection() {

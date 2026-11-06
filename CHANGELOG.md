@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.2.1 — 2026-11-06
+
+- Made the Select All Visible button a toggle, matching the behaviour of the
+  other fleet modules: pressing it selects every visible row; pressing it
+  again when all visible rows are already selected deselects all visible
+  rows. Rows selected outside the current view are never touched, and the
+  Ctrl+A shortcut follows the same toggle.
+- Added OrganiserState regressions for the full-view toggle, partial views,
+  out-of-view rows, and empty views.
 
 ## 1.2.0 — 2026-11-05
 
