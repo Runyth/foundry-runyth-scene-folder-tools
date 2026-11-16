@@ -1,26 +1,36 @@
 {
-  "name": "runyth-scene-folder-tools",
-  "version": "1.2.1",
-  "private": true,
-  "type": "module",
   "engines": {
     "node": ">=22.13.0 <27"
   },
-  "scripts": {
-    "clean": "node tools/clean.mjs",
-    "format:check": "node tools/format-check.mjs",
-    "lint": "node tools/lint.mjs",
-    "typecheck": "node tools/typecheck.mjs",
-    "test": "node --test tests/*.test.js",
-    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test",
-    "build": "node tools/build.mjs",
-    "package": "npm run quality && node tools/package.mjs",
-    "inspect:archives": "node tools/inspect-archives.mjs",
-    "release:verify": "npm run package && npm run inspect:archives"
-  },
+  "license": "AGPL-3.0-or-later",
+  "name": "runyth-scene-folder-tools",
+  "packageManager": "npm@11.16.0",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/Runyth/foundry-runyth-scene-folder-tools.git"
   },
-  "license": "AGPL-3.0-or-later"
+  "scripts": {
+    "adopt": "node tools/adopt-existing.mjs",
+    "audit": "node tools/audit-foundry.mjs",
+    "bootstrap": "node tools/bootstrap.mjs",
+    "build": "node tools/build.mjs",
+    "check": "npm run release:verify",
+    "clean": "node tools/clean.mjs",
+    "format": "node tools/format.mjs --write",
+    "format:check": "node tools/format.mjs --check",
+    "inspect:archives": "node tools/inspect-archives.mjs",
+    "lint": "node tools/lint.mjs",
+    "package": "npm run quality && node tools/package.mjs",
+    "quality": "npm run format:check && npm run lint && npm run typecheck && npm run test",
+    "release:assert": "node tools/assert-release-tag.mjs",
+    "release:verify": "npm run package && npm run inspect:archives",
+    "template:sync": "node tools/template-sync.mjs",
+    "test": "node --test --test-reporter=spec",
+    "typecheck": "node tools/typecheck.mjs",
+    "verify:release": "node tools/verify-release.mjs",
+    "version:set": "node tools/set-version.mjs"
+  },
+  "type": "module",
+  "version": "1.2.1"
 }

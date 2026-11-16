@@ -7,3 +7,11 @@ coverage/
 Thumbs.db
 .vscode/
 .idea/
+# --- Runyth template managed (begin) ---
+.nyc_output/
+.cache/
+.runyth-template-source/
+.env
+.env.*
+!.env.example
+# --- Runyth template managed (end) ---

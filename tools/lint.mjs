@@ -7,14 +7,24 @@ import { spawnSync } from "node:child_process";
 const root = path.resolve(new URL("..", import.meta.url).pathname);
 const config = JSON.parse(await readFile(path.join(root, "quality.config.json"), "utf8"));
 const ignored = new Set(["node_modules", "dist", "artifacts", "coverage", ".git"]);
+const ignoredGlobs = config.ignoredGlobs ?? [];
 const failures = [];
+
+function globToRegExp(pattern) {
+  const escaped = pattern.replace(/[.+^${}()|[\]\\]/gu, "\\$&").replace(/\*\*/gu, "\u0000").replace(/\*/gu, "[^/]*").replace(/\u0000/gu, ".*");
+  return new RegExp(`^${escaped}$`, "u");
+}
+const ignoredPatterns = ignoredGlobs.map(globToRegExp);
+function isIgnored(relative) {
+  return ignoredPatterns.some((pattern) => pattern.test(relative.split(path.sep).join("/")));
+}
 
 async function walk(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     if (ignored.has(entry.name)) continue;
     const absolute = path.join(directory, entry.name);
     if (entry.isDirectory()) await walk(absolute);
-    else if (/\.(?:js|mjs)$/.test(entry.name)) await checkJavaScript(absolute);
+    else if (/\.(?:js|mjs)$/.test(entry.name) && !isIgnored(path.relative(root, absolute))) await checkJavaScript(absolute);
   }
 }
 

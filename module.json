@@ -1,25 +1,22 @@
 {
-  "id": "runyth-scene-folder-tools",
-  "title": "Runyth Scene Folder Tools",
-  "description": "Reliable Scene folder selection, recursive filtering, advanced sorting, bulk organization, quick moves, undo, and scoped drag auto-scrolling for Foundry VTT.",
-  "version": "1.2.1",
   "authors": [
     {
       "name": "Runyth",
       "url": "https://github.com/Runyth"
     }
   ],
+  "changelog": "CHANGELOG.md",
   "compatibility": {
+    "maximum": "13",
     "minimum": "13",
-    "verified": "13",
-    "maximum": "13"
+    "verified": "13"
   },
+  "description": "Reliable Scene folder selection, recursive filtering, advanced sorting, bulk organization, quick moves, undo, and scoped drag auto-scrolling for Foundry VTT.",
+  "download": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/download/v1.2.1/runyth-scene-folder-tools-v1.2.1-mod.zip",
   "esmodules": [
     "scripts/main.js"
   ],
-  "styles": [
-    "styles/runyth-scene-folder-tools.css"
-  ],
+  "id": "runyth-scene-folder-tools",
   "languages": [
     {
       "lang": "en",
@@ -33,9 +30,12 @@
     }
   ],
   "license": "LICENSE",
-  "readme": "README.md",
-  "url": "https://github.com/Runyth/foundry-runyth-scene-folder-tools",
   "manifest": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/latest/download/module.json",
-  "download": "https://github.com/Runyth/foundry-runyth-scene-folder-tools/releases/download/v1.2.1/runyth-scene-folder-tools-v1.2.1-mod.zip",
-  "changelog": "CHANGELOG.md"
+  "readme": "README.md",
+  "styles": [
+    "styles/runyth-scene-folder-tools.css"
+  ],
+  "title": "Runyth Scene Folder Tools",
+  "url": "https://github.com/Runyth/foundry-runyth-scene-folder-tools",
+  "version": "1.2.1"
 }

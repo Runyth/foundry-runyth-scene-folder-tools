@@ -1,7 +1,31 @@
 {
+  "allowTabsIn": [
+    "package-lock.json"
+  ],
+  "forbiddenPatterns": [
+    "eval(",
+    "Function("
+  ],
+  "forbiddenSourceMarkers": [
+    "TODO",
+    "FIXME",
+    "HACK"
+  ],
+  "ignoredGlobs": [
+    "tools/adopt-existing.mjs",
+    "tools/assert-release-tag.mjs",
+    "tools/audit-foundry.mjs",
+    "tools/bootstrap.mjs",
+    "tools/check.mjs",
+    "tools/commit-sync.mjs",
+    "tools/format.mjs",
+    "tools/set-version.mjs",
+    "tools/template-sync.mjs",
+    "tools/validate.mjs",
+    "tools/verify-release.mjs",
+    "tools/lib/**",
+    "test/runyth/**"
+  ],
   "maximumLineLength": 160,
-  "forbiddenSourceMarkers": ["TODO", "FIXME", "HACK"],
-  "forbiddenPatterns": ["eval(", "Function("],
-  "requiredFinalNewline": true,
-  "allowTabsIn": ["package-lock.json"]
+  "requiredFinalNewline": true
 }
